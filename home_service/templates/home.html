@@ -9,7 +9,7 @@
 						<div class="slider-img">
 							<div class="slider_banner_info">
 								<div class="text">
-									<h3 class="" style="color:black;font-size:40px">We Are The Best Home Service For Making Your Home Shine</h3>
+									<!-- <h3 class="" style="color:black;font-size:40px">We Are The Best Home Service For Making Your Home Shine</h3> -->
 								</div>
 							</div>
 						</div>
@@ -18,7 +18,7 @@
 						<div class="slider-img-2">
 							<div class="slider_banner_info">
 								<div class="text">
-								  <h3 class="wisteria" style="color:black;font-size:40px">Making your Home Shine and Spotless Is Our Business And Priority</h3>
+								  <!-- <h3 class="wisteria" style="color:black;font-size:40px">Making your Home Shine and Spotless Is Our Business And Priority</h3> -->
 								</div>
 
 							</div>
@@ -26,21 +26,10 @@
 					</li>
 					
 					<li>
-						<div class="slider-img-3">
-							<div class="slider_banner_info">
-								<div class="text">
-								  <h3 class="wisteria" style="color:black;font-size:40px">Our Home Service Providers will Make You Proud in Society</h3>
-								</div>
-
-							</div>
-						</div>
-					</li>
-
-					<li>
 						<div class="slider-img-4">
 							<div class="slider_banner_info">
 								<div class="text">
-								  <h3 class="wisteria" style="color:black;font-size:40px">Making your Home Shine and Spotless Is Our Business And Priority</h3>
+								  <!-- <h3 class="wisteria" style="color:black;font-size:40px">Making your Home Shine and Spotless Is Our Business And Priority</h3> -->
 								</div>
 
 							</div>
@@ -56,9 +45,9 @@
 
 </header>
 <section class="bannerbottom py-lg-5 py-md-4 py-md-3 py-2">
-    <h1 class="text-center" >All Services</h1>
+    <h1 style="font-weight: bolder;" class="text-center text-secondary mb-5">All Services</h1>
 
-    <iframe style="height:0"></iframe><div class="bannerbottom py-lg-5 py-md-4 py-md-3 py-2">
+    <!-- <iframe style="height:0"></iframe><div class="bannerbottom py-lg-5 py-md-4 py-md-3 py-2"> -->
 		 
 
 		
@@ -66,46 +55,40 @@
 <div class="row">
     {% for i in ser %}
 <div class="col-md-4 col-sm-12 w3_ban1">
-<div class="card">
+<div class="card h-100">
   <img class="card-img-top" src="{{i.image.url}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{i.category}} <span style="color:red">(<span style="color:black;font-weight:bold">{{i.total}}</span>)</span></h5>
+	<h3>{{i.category}}</h3>
+	<h5>({{i.total}})</h5>
     <p class="card-text">{{i.desc}}</p>
-    <a href="{% url 'explore_services' i.id %}" class="btn btn-primary">Explore</a>
+	<div class="mt-auto mb-2">
+		<a href="{% url 'explore_services' i.id %}" class="btn btn-primary">Explore</a>
+	</div>
   </div>
 </div>
 </div>
 
     
     {% endfor %}
-	<div class="container" >
-		<h1 style="text-align:center; margin-top:2rem; color:red;">About Us</h1>
+	<div class="container card" >
+		<h1 class="text-secondary" style="font-weight: bolder; text-align:center; margin-top:2rem;">About Us</h1>
 		<section class="about" id="section2">
 		<br>
-       <div class="row align-items-center">
- 
-          <div class="col-md-6 image">
-            <img src="/static/images/banner3.jpg"  class="w-100 mb-5 mb-md-0" alt="">
-          </div>
- 
-          <div class="col-md-6 content">
-			
-
-            
-    
-             <p>Home service itself defines that it provides you range of 
-            services at your doorstep.our dedicated and experienced
-          team will statisfy the customers by fulfiling their
-        requirments.We deliver our services wherever you want
-      We are well known for providing all kind of services at
-    very llower cost compared to any other</p>
-            
-          </div>
- 
-       </div>
- 
+		<div class="row align-items-center">
+			<div class="col-md-6 image mb-3">
+				<img src="/static/images/banner.png"  class="w-100 mb-5 mb-md-0" alt="">
+			</div>
+			<div class="col-md-6 content">
+				<p>Home service itself defines that it provides you range of 
+					services at your doorstep.our dedicated and experienced
+					team will statisfy the customers by fulfiling their
+					requirments.We deliver our services wherever you want
+					We are well known for providing all kind of services at
+					very llower cost compared to any other
+				</p>
+			</div>
+		</div>
     </div>
-
 </div>
 </div>
 </div>

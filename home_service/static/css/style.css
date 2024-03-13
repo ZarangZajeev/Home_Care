@@ -191,7 +191,7 @@ a:focus, a:hover {
 /*--banner-slider--*/
 
 .slider-img {
-    background: url(../images/cle4.jpg) no-repeat 0px 0px;
+    background: url(../images/banner1.png) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -201,7 +201,7 @@ a:focus, a:hover {
 }
 
 .slider-img-2 {
-    background: url(../images/spa3.jpg) no-repeat 0px 0px;
+    background: url(../images/banner2.png) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -211,7 +211,7 @@ a:focus, a:hover {
 }
 
 .slider-img-3 {
-    background: url(../images/pes1.jpg) no-repeat 0px 0px;
+    background: url(../images/banner3.png) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -220,7 +220,7 @@ a:focus, a:hover {
     min-height: 600px;
 }
 .slider-img-4 {
-    background: url(../images/hea1.jpg) no-repeat 0px 0px;
+    background: url(../images/banner4.png) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
