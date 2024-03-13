@@ -59,16 +59,16 @@
                                   <td>{{i.book_date}}</td>
                                   <td>{{i.book_days}}</td>
                                   <td>{{i.book_hours}}</td>
-                                  {% ifequal i.status.status 'Accept' %}
+                                  {% if i.status.status == 'Accept' %}
                                   <td><span style="color:white;background:green;padding:0.2em 0.8em 0.2em 0.8em;border-radius:8%">{{i.status.status}}</span></td>
                                   {% else %}
                                   <td><span style="color:white;background:red;padding:0.2em 0.8em 0.2em 0.8em;border-radius:8%">{{i.status.status}}</span></td>
-                                  {% endifequal %}
-                                  {% ifequal i.status.status 'Accept' %}
+                                  {% endif %}
+                                  {% if i.status.status == 'Accept' %}
                                   <td style="font-weight:bold;color:blue">Accepted</td>
                                   {% else %}
                                   <td><a href="{% url 'accept_confirmation' i.id %}" ><button class="btn btn-success"  onclick="return confirm('Are You Confirm for Accept Order?')"><i class="fa fa-thumbs-up"></i> Confirm</button></a></td>
-                                  {% endifequal %}
+                                  {% endif %}
                               </tr>
                               {% endfor %}
                           </tbody>

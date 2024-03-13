@@ -30,16 +30,16 @@
 <img src="{% static 'images/home3.png' %}" style="width:100%;height:500px">
 </section>
 
-{% ifequal terro "message" %}
+{% if terro == "message" %}
 <script>
 	alert('Your profile has not complted plz complete your profile now');
 	window.location = "{% url 'edit_service_profile' %}";
 </script>
-{% endifequal %}
-{% ifequal terro "message1" %}
+{% endif %}
+{% if terro == "message1" %}
 <script>
 	alert('profile verification  is  still pending,try after sometimes.');
 	window.location = "{% url 'logout' %}";
 </script>
-{% endifequal %}
+{% endif %}
 {% endblock %}

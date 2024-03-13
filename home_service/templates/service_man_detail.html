@@ -35,9 +35,9 @@
             <div>
             </div>
 		</div>
-        {% ifnotequal  pro.status.status 'Accept' %}
+        {% if  pro.status.status != 'Accept' %}
         <center><a href="{% url 'status' pro.id %}" ><button class="btn btn-success">Take Action</button></a></center>
-        {% endifnotequal %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}
