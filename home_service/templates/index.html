@@ -3,7 +3,8 @@
 {% load static %}
 <html>
 <head>
-<title>Home Service</title>
+<title>Shelter Squad</title>
+<link rel="icon" href="{% static 'images/logo.png' %}" type="image/png" >
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="keywords" content="Home Service Management System a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -35,95 +36,94 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <ul class="navbar-nav ml-auto">
           {% if request.user.is_staff %}
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" style="background-color:red" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-user"></i> Hello,{{request.user.username}}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-            </div>
-          </li>
-            {% else %}
-            {% if request.user.username %}
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user"></i> Hello,{{request.user.username}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </div>
+            </li>
+          {% else %}
+
+          {% if request.user.username %}
             {% if error == "pat" %}
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'user_home' %}">
+                <i class="fa fa-home"></i> Home</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'service' %}">
+                <i class="fa fa-car"></i> Service</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'customer_order' %}">
+                <i class="fa fa-file"></i> My Booking</a>
+              </li>
 
-            <li class="nav-item ">
-            <a class="nav-link" href="{% url 'user_home' %}">
-              <i class="fa fa-home"></i> Home</a>
-          </li>
-            <li class="nav-item ">
-            <a class="nav-link" href="{% url 'service' %}">
-              <i class="fa fa-car"></i> Service</a>
-          </li>
-            <li class="nav-item ">
-            <a class="nav-link" href="{% url 'customer_order' %}">
-              <i class="fa fa-file"></i> My Booking</a>
-          </li>
-
-        
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" style="background-color:red" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-user"></i> Hello,{{request.user.username}}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-            
-
-              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-            </div>
-          </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user"></i> Hello,{{request.user.username}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                </div>
+              </li>
             {% else %}
-            <li class="nav-item ">
-            <a class="nav-link" href="{% url 'service_home' %}">
-              <i class="fa fa-home"></i> Home</a>
-          </li>
-            <li class="nav-item ">
-            <a class="nav-link" href="{% url 'service_order' %}">
-                <i class="fa fa-first-order"></i> My Order </a>
-          </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" style="background-color:red" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-user"></i> Hello,{{request.user.username}}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'service_profile' %}">Profile</a>
 
-              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-            </div>
-          </li>
+            <li class="nav-item ">
+              lass="nav-link" href="{% url 'service_home' %}">
+              <i class="fa fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="{% url 'service_order' %}">
+              <i class="fa fa-first-order"></i> My Order </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user"></i> Hello,{{request.user.username}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'service_profile' %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </div>
+            </li>
           {% endif %}
 
-
-            {% else %}
+          {% else %}
             <li class="nav-item ">
-            <a class="nav-link btn" href="{% url 'home' %}">
-                <i class="fa fa-home"></i> Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#section2">
-                <i class="fa fa-file"></i> About</a>
-          </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'service' %}">
-                <i class="fa fa-briefcase"></i> Services</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link " href="{% url 'contact' %}">
-                <i class="fa fa-phone"></i> Contact</a>
-          </li>
-
-            
+              <a class="nav-link btn" href="{% url 'home' %}">
+              <i class="fa fa-home"></i> 
+                Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#section2">
+              <i class="fa fa-file"></i>
+               About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'service' %}">
+              <i class="fa fa-briefcase"></i>
+               Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="{% url 'contact' %}">
+                <i class="fa fa-phone"></i>
+                 Contact
+              </a>
+            </li>
 
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" style="background-color:red" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-sign-in"></i> Login
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'login' %}">User Login</a>
-              <a class="dropdown-item" href="{% url 'admin_login' %}">Admin Login</a>
-            </div>
-          </li>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-sign-in"></i>
+                 Login
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'login' %}">User Login</a>
+                <a class="dropdown-item" href="{% url 'admin_login' %}">Admin Login</a>
+              </div>
+            </li>
 
             {% endif %}
             {% endif %}
