@@ -257,7 +257,8 @@ a:focus, a:hover {
 }
 /** Inner **/
 .slider1-img {
-    background: url(../images/cle4.jpg) no-repeat 0px 0px;
+    /* background: url(../images/cle4.jpg) no-repeat 0px 0px; */
+    background-color: chocolate;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -2126,6 +2127,8 @@ section.footer h3 {
 .copyright a{
 	color:#fff;
 }
+
+
 /** /Footer **/
 
 /** Responsive **/

@@ -156,7 +156,7 @@ def Signup_User(request):
 
 @method_decorator(login_required, name='dispatch')
 class UserHomeView(View):
-    template_name = 'user_home.html'
+    template_name = 'service_home.html'
 
     def get(self, request, *args, **kwargs):
         user = request.user
