@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.views.generic import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from home_service.forms import CustomerServiceSearchForm
 
 
 import datetime
@@ -688,3 +689,26 @@ def read_message(request):
     pro1 = Contact.objects.filter(status=sta)
     d = {'ser':pro1}
     return render(request,'read_message.html',d)
+
+
+
+def customer_service_search(request):
+    if request.method == 'GET':
+        form = CustomerServiceSearchForm(request.GET)
+        if form.is_valid():
+            category = form.cleaned_data.get('category')
+            print(category)
+            # services = Service_Category.objects.filter(category__icontains=category)
+            services = Service_Category.objects.filter(category__icontains=category)
+            print(services)
+            if services:
+                return render(request, 'search_results.html', {'services': services})
+            else:
+                error_message = "No services found for the provided category."
+                return render(request, 'search_results.html', {'form': form, 'error_message': error_message})
+        else:
+            error_message = "Invalid search criteria."
+            return render(request, 'search_results.html', {'form': form, 'error_message': error_message})
+    else:
+        form = CustomerServiceSearchForm()
+        return render(request, 'search_results.html', {'form': form})

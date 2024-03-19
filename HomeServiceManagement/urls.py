@@ -55,4 +55,5 @@ urlpatterns = [
     path('order_detail(<int:pid>)',Order_detail,name="order_detail"),
     path('service_man_detail(<int:pid>)',service_man_detail,name="service_man_detail"),
     path('delete_city(<int:pid>)',delete_city,name="delete_city"),
+    path('search/', customer_service_search, name='customer_service_search'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -57,11 +57,11 @@ class Service_Category(models.Model):
         return self.category
 
 class Service(models.Model):
-    category = models.ForeignKey(Service_Category,on_delete=models.CASCADE,null=True)
+    categorys = models.ForeignKey(Service_Category,on_delete=models.CASCADE,null=True)
     service = models.ForeignKey(Service_Man, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return self.service.user.first_name
+        return self.category.category
 
 class Contact(models.Model):
     status = models.ForeignKey(Status,on_delete=models.CASCADE,null=True)
