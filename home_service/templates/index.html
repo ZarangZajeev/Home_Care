@@ -70,16 +70,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
           {% if request.user.username %}
             {% if error == "pat" %}
-            <form method="GET" action="{% url 'customer_service_search' %}">
-              <!-- {{ form.as_p }} -->
-              <div class="d-flex justify-content-between">
-                <div>
-                  <input class="form-control" type="text" name="category" id="">
-                </div>
-                <div>
-                  <button class="btn" type="submit">Search</button>
-                </div>
-              </div>
+            <form class="d-flex" role="search" method="GET" action="{% url 'customer_service_search' %}">
+              <input class="form-control me-2" name="category" type="search" placeholder="Search Category" aria-label="Search">
+              <button class="btn btn-dark" type="submit">Search</button>
             </form>
           
 

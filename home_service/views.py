@@ -704,7 +704,7 @@ def customer_service_search(request):
             if services:
                 return render(request, 'search_results.html', {'services': services})
             else:
-                error_message = "No services found for the provided category."
+                error_message = "No services found for the provided category"
                 return render(request, 'search_results.html', {'form': form, 'error_message': error_message})
         else:
             error_message = "Invalid search criteria."

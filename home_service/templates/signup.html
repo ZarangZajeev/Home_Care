@@ -105,7 +105,52 @@
                             <div class="form-group">
                                 <div class="col-md-12">
 									<label for="contactemail">Select User Type</label>
-                                    <p style="margin-bottom:4%;padding:9px;border:1px solid lightgrey;border-radius:2px">Service Man <input type="radio" name="type" value="service_man">  <span style="margin-left:2%">Customer</span> <input type="radio" name="type" value="customer"></p>
+                                    <p style="margin-bottom:4%;padding:9px;border:1px solid lightgrey;border-radius:2px">
+										Service Man <input type="radio" name="type" value="service_man" onclick="showTerms(this.value)">  
+										<span style="margin-left:2%">Customer</span> <input type="radio" name="type" value="customer" onclick="showTerms(this.value)">
+									</p>
+									
+									<div id="serviceManTerms" style="display: none;">
+										<div class="text-center">
+											<h5>Service Man Terms and Conditions</h5>
+										</div>
+										<div class="text-center my-3">
+											<span>Here are the terms and conditions for Service Man...</span>
+										</div>
+										<div>
+											<ul>
+												<li>Each service man account is for individual use only and should not be shared with others</li>
+												<li>Service men must update their profiles with current contact information and work details.</li>
+												<li>Posting or sharing inappropriate, offensive, or copyrighted content is strictly prohibited.</li>
+											</ul>
+										</div>
+										<div class="mt-4">
+											<label>
+												<input type="checkbox" id="agreeCheckbox"> I agree to the terms and conditions
+											</label>	
+										</div>
+									</div>
+								
+									<div id="customerTerms" style="display: none;">
+										<div class="text-center">
+											<h6>Customer tearms and conditions</h6>
+										</div>
+										<div class="text-center my-3">
+											<span>Here are the terms and conditions for Customers...</span>
+										</div>
+										<div>
+											<ul>
+												<li>You must provide accurate and current information during the account creation process.</li>
+												<li>You may use our services only for lawful purposes and in accordance with these terms.</li>
+												<li>If applicable, you agree to pay all fees and charges associated with your use of our services.</li>
+											</ul>
+										</div>
+										<div class="mt-4">
+											<label>
+												<input type="checkbox" id="agreeCheckbox"> I agree to the terms and conditions
+											</label>	
+										</div>
+									</div>
 								</div>
                             </div>
 							<div>
@@ -125,5 +170,25 @@
 	</section>
 	</section>
 	<!-- //contact -->
+	<script>
+        function showTerms(value) {
+            var serviceManTerms = document.getElementById('serviceManTerms');
+            var customerTerms = document.getElementById('customerTerms');
+            var agreeCheckbox = document.getElementById('agreeCheckbox');
 
+            if (value === 'service_man') {
+                serviceManTerms.style.display = 'block';
+                customerTerms.style.display = 'none';
+                agreeCheckbox.required = true; // Make checkbox required
+            } else if (value === 'customer') {
+                serviceManTerms.style.display = 'none';
+                customerTerms.style.display = 'block';
+                agreeCheckbox.required = true; // Make checkbox required
+            } else {
+                serviceManTerms.style.display = 'none';
+                customerTerms.style.display = 'none';
+                agreeCheckbox.required = false; // Make checkbox not required
+            }
+        }
+    </script>
 {% endblock %}
