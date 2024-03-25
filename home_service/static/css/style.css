@@ -258,7 +258,7 @@ a:focus, a:hover {
 /** Inner **/
 .slider1-img {
     /* background: url(../images/cle4.jpg) no-repeat 0px 0px; */
-    background-color: chocolate;
+    background-color:rgb(22, 18, 18);
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1589,7 +1589,7 @@ ul.portfolio-area li figure {
 .gallery h3 {
     text-align: center;
     font-size: 40px;
-    color: #000;
+    /* color: #000; */
 	text-transform:uppercase;
 	letter-spacing:5px;
 	font-weight:300;
@@ -1673,7 +1673,7 @@ section.skills.py-lg-5.py-md-4.py-md-3.py-2 {
 }
 .form-right input[type="text"], .form-right input[type="email"], .contact-bothside-agileinfo textarea {
     width: 100%;
-    color: #000;
+    /* color: #000; */
     background: #ffffff;
     outline: none;
     font-size: 15px;
@@ -1720,7 +1720,7 @@ section.skills.py-lg-5.py-md-4.py-md-3.py-2 {
 }
 .contact input[type="submit"]:hover {
     background: #ffeb3b;
-    color: #000;
+    /* color: #000; */
     border: 1px solid #000;
 }
 .w3_mg h3 {
@@ -2042,95 +2042,6 @@ h4.w3ls-title.text-center.text-uppercase.pb-md-5.pb-4 {
 }
 /*--//contact--*/
 
-/** Footer **/
-/*Change icons size here*/
-.social-icons .fa {
-    font-size: 1.8em;
-}
-/*Change icons circle size and color here*/
-.social-icons .fab {
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-	font-size:13px;
-    text-align: center;
-    color: #FFF;
-    color: rgba(255, 255, 255, 0.8);
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-.wrapper {
-    margin: 15px 0;
-}
-.social-icons.icon-circle .fab{ 
-    border-radius: 50%;
-}
-.social-icons.icon-rounded .fab{
-    border-radius:5px;
-}
-.social-icons.icon-flat .fab{
-    border-radius: 0;
-}
-
-.social-icons .fab:hover, .social-icons .fab:active {
-    color: #FFF;
-    -webkit-box-shadow: 1px 1px 1px #333;
-    -moz-box-shadow: 1px 1px 1px #333;
-    box-shadow: 0px 0px 1px #333; 
-}
-.social-icons.icon-zoom .fab:hover, .social-icons.icon-zoom .fab:active { 
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1); 
-}
-
-.social-icons.icon-zoom .fab:hover, .social-icons.icon-zoom .fab:active { 
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1); 
-}
-i.fab.fa-linkedin-in {
-    background-color: #0077B5;
-} 
-i.fab.fa-twitter {
-    background-color: #00aced;
-}
-i.fab.fa-facebook-f {
-    background-color: #3b5998;
-}
-.list-inline li {
-    display: inline-block;
-    padding-right: 5px;
-    padding-left: 5px;
-    margin-bottom: 10px;
-}
-section.footer {
-    text-align: center;
-    background-color: #000;
-    padding: 1em 0 0;
-}
-section.footer h3 {
-    font-size: 50px;
-    color: #fff;
-}
-.copyright p{
-	color:#fff;
-	font-size: 15px;
-}
-.copyright a{
-	color:#fff;
-}
-
-
-/** /Footer **/
-
 /** Responsive **/
 @media screen and (max-width: 1440px){
 .w3_ms1 {
@@ -2186,12 +2097,9 @@ section.footer h3 {
     border-color: #fff;
 	background-color: #fff;
 }
-ul.navbar-nav.ml-auto {
-    text-align: center;
-    background-color: #000;
-}
+
 a.dropdown-item {
-    text-align: center;
+    /* text-align: center; */
     color: #fff;
     background-color: #000;
 }
