@@ -85,5 +85,9 @@ class Order(models.Model):
     book_date = models.DateField(null=True)
     book_days = models.CharField(max_length=100, null=True)
     book_hours = models.CharField(max_length=100, null=True)
+    razorpay_payment_id = models.CharField(max_length=100, null=True)
+    razorpay_order_id = models.CharField(max_length=100, null=True)
+    razorpay_signature = models.CharField(max_length=100, null=True)
+
     def __str__(self):
         return self.service.user.first_name+" "+self.customer.user.first_name

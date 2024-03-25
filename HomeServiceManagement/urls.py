@@ -4,6 +4,7 @@ from home_service.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from home_service import views
+from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',Home,name="home"),
@@ -56,4 +57,12 @@ urlpatterns = [
     path('service_man_detail(<int:pid>)',service_man_detail,name="service_man_detail"),
     path('delete_city(<int:pid>)',delete_city,name="delete_city"),
     path('search/', customer_service_search, name='customer_service_search'),
+    path('reset_password',auth_views.PasswordResetView.as_view(template_name="reset_password.html"),name="reset_password"),
+    path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(template_name='reset_password_sent.html'),name="password_reset_done"),
+    path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name='password_reset.html'),name="password_reset_confirm"),
+    path('reset_password_complete',auth_views.PasswordResetCompleteView.as_view(template_name='reset_password_complete.html'),name="password_reset_complete"),
+
+    path('create_order/', views.create_order, name='create_order'),
+    path('payment_success/', views.payment_success, name='payment_success'),
+    path('payment_failure/', views.payment_failure, name='payment_failure'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

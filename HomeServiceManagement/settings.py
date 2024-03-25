@@ -122,3 +122,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'hcare0254@gmail.com'
+EMAIL_HOST_PASSWORD ='kfem gdsl pobu uwya'
+
+import os
+
+# Define Razorpay API keys
+RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID')  # Get your key ID from environment variables
+RAZORPAY_SECRET_KEY = os.environ.get('RAZORPAY_SECRET_KEY')  # Get your secret key from environment variables

@@ -53,7 +53,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<form action="" class="mt-5" method="post">
+				<form action="" class="mt-5" method="post" enctype="multipart/form-data">
 					<div class="text-center">
 						<span class="" style="font-weight: 800; font-size: 3em;">User Login</span>
 					</div>
@@ -85,11 +85,16 @@
 					</div>
 				</form>
 				<div>
-					<center style="margin-top:6%">
-						<a href="{% url 'signup' %}" style="margin-top:200px;color:rgb(53, 53, 186)">
-							<i class="fa fa-hand-pointer-o" aria-hidden="true"></i> for new user create your Account
-						</a>
-					</center>
+					<div class="d-flex flex-column text-center" style="margin-top:6%">
+						<div class="my-3">
+							<a href="{%url 'reset_password' %}"  style="margin-top:200px;margin-left: 10px;  font-weight:bold;color:blue ">forget password</a>
+						</div>
+						<div>
+							<a href="{% url 'signup' %}" style="margin-top:200px;color:rgb(53, 53, 186)">
+								<i class="fa fa-hand-pointer-o" aria-hidden="true"></i> for new user create your Account
+							</a>	
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-6">

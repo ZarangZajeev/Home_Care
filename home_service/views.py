@@ -1,13 +1,21 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
-from .models import *
 from django.contrib.auth import authenticate,login,logout
 from django.views.generic import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail
+from django.http import HttpResponse
+
+from django.conf import settings
+
 from home_service.forms import CustomerServiceSearchForm
 
-
+import random
+import string
+from .models import *
+import razorpay
 import datetime
 
 # Create your views here.
@@ -712,3 +720,106 @@ def customer_service_search(request):
     else:
         form = CustomerServiceSearchForm()
         return render(request, 'search_results.html', {'form': form})
+    
+# Forgot password
+    
+def generate_otp(length=6):
+    """Generate a random OTP of specified length."""
+    characters = string.digits
+    return ''.join(random.choice(characters) for _ in range(length))    
+    
+def forgot_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return HttpResponse("No user with this email exists.")
+        
+        # Generate OTP
+        otp = generate_otp()
+
+        # Update user's profile with OTP (You might want to create a profile model)
+        user.profile.otp = otp
+        user.profile.save()
+
+        # Send OTP via email
+        subject = 'Password Reset OTP'
+        message = f'Your OTP for password reset is: {otp}'
+        from_email = 'chinchuofficialweb@gmail.com'  # Update this with your email
+        recipient_list = [email]
+        send_mail(subject, message, from_email, recipient_list)
+
+        return HttpResponse("An OTP has been sent to your email. Please check your inbox.")
+    else:
+        return render(request, 'forgot_password.html')
+    
+
+
+# Razorpay
+
+def create_order(request):
+    if request.method == 'POST':
+        # Retrieve necessary data from the form
+        service_id = request.POST.get('service_id')
+        customer_id = request.POST.get('customer_id')
+        amount = request.POST.get('amount')
+
+        # Create an order in your database
+        order = Order.objects.create(
+            service_id=service_id,
+            customer_id=customer_id,
+            amount=amount
+        )
+
+        # Initialize Razorpay client with your API keys
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_SECRET_KEY))
+
+        # Create Razorpay order
+        razorpay_order = client.order.create({
+            'amount': int(amount) * 100,  # Amount in paisa
+            'currency': 'INR',
+            'receipt': str(order.id),  # Unique ID for the order
+            'payment_capture': '1'  # Auto capture payment
+        })
+
+        # Redirect user to Razorpay checkout page
+        return render(request, 'checkout.html', {'order': razorpay_order})
+
+    return render(request, 'create_order.html')
+
+@csrf_exempt
+def payment_success(request):
+    if request.method == 'POST':
+        # Get the Razorpay order ID and payment ID from the request
+        razorpay_order_id = request.POST.get('razorpay_order_id')
+        razorpay_payment_id = request.POST.get('razorpay_payment_id')
+
+        # Fetch the corresponding order from your database
+        order = Order.objects.get(id=razorpay_order_id)
+
+        # Update the order status as paid
+        order.report_status = 'Payment Successful'
+        order.save()
+
+        return render(request, 'payment_success.html')
+
+    return redirect('home')  # Redirect to home page if the request is not a POST request
+
+@csrf_exempt
+def payment_failure(request):
+    if request.method == 'POST':
+        # Get the Razorpay order ID and payment ID from the request
+        razorpay_order_id = request.POST.get('razorpay_order_id')
+        razorpay_payment_id = request.POST.get('razorpay_payment_id')
+
+        # Fetch the corresponding order from your database
+        order = Order.objects.get(id=razorpay_order_id)
+
+        # Update the order status as failed
+        order.report_status = 'Payment Failed'
+        order.save()
+
+        return render(request, 'payment_failure.html')
+
+    return redirect('home')
