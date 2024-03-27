@@ -133,5 +133,5 @@ EMAIL_HOST_PASSWORD ='kfem gdsl pobu uwya'
 import os
 
 # Define Razorpay API keys
-RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID')  # Get your key ID from environment variables
-RAZORPAY_SECRET_KEY = os.environ.get('RAZORPAY_SECRET_KEY')  # Get your secret key from environment variables
+RAZORPAY_KEY_ID = os.environ.get('rzp_test_Pho97WwIzgHsrt')  # Get your key ID from environment variables
+RAZORPAY_SECRET_KEY = os.environ.get('e4vwWmfNEMUXquIplbatAJCk')  # Get your secret key from environment variables
