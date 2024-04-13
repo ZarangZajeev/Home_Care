@@ -61,7 +61,11 @@
               <td>{{i.book_date}}</td>
               <td>{{i.book_days}}</td>
               <td>{{i.book_hours}}</td>
-              <td>{{i.status.status}}</td>
+              {% if i.status.status == 'Accept' %}
+                <td><a href="#">Pay Now</a></td>
+              {% else %}
+                <td>{{i.status.status}}</td>
+              {% endif %}
               <td><a href="{% url 'Booking_detail' i.id %}" ><i style="font-size:30px;color:green" class="fa fa-eye"></i></a></td>
               <td><a href="{% url 'delete_Booking' i.id %}" ><i style="font-size:30px;color:red" class="fa fa-times" onclick="return confirm('Are You Confirm?')"></i></a></td>
             </tr>

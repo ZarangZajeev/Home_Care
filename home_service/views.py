@@ -235,6 +235,19 @@ def Customer_Order(request):
     d = {'error':error,'order':order}
     return render(request,'customer_order.html',d)
 
+def Confirm_order(request):
+    user= User.objects.get(id=request.user.id)
+    error=""
+    try:
+        sign = Customer.objects.get(user=user)
+        error = "pat"
+    except:
+        sign = Service_Man.objects.get(user=user)
+        pass
+    order = Order.objects.filter(customer=sign)
+    d = {'error':error,'order':order}
+    return render(request,'customer_order.html',d)
+
 
 def Customer_Booking(request,pid):
     if not request.user.is_authenticated:

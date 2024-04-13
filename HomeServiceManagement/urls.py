@@ -61,6 +61,7 @@ urlpatterns = [
     path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(template_name='reset_password_sent.html'),name="password_reset_done"),
     path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name='password_reset.html'),name="password_reset_confirm"),
     path('reset_password_complete',auth_views.PasswordResetCompleteView.as_view(template_name='reset_password_complete.html'),name="password_reset_complete"),
+    path('confirm_order',Confirm_order,name="confirm-oreder"),
 
     path('create_order/', views.create_order, name='create_order'),
     path('payment_success/', views.payment_success, name='payment_success'),
