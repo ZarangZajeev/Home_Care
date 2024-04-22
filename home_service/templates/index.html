@@ -22,6 +22,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 </head>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var categorySearchBox = document.getElementById("category_search_box");
+    var citySearchBox = document.getElementById("city_search_box");
+    var searchCategoryRadio = document.getElementById("search_category");
+    var searchCityRadio = document.getElementById("search_city");
+
+    searchCategoryRadio.addEventListener("change", function() {
+      categorySearchBox.style.display = "block";
+      citySearchBox.style.display = "none";
+    });
+
+    searchCityRadio.addEventListener("change", function() {
+      categorySearchBox.style.display = "none";
+      citySearchBox.style.display = "block";
+    });
+  });
+</script>
 <style>
   body {
     display: flex;
@@ -60,11 +78,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
           {% if request.user.username %}
             {% if error == "pat" %}
-            <form class="d-flex" role="search" method="GET" action="{% url 'customer_service_search' %}">
+            <!-- <form class="d-flex" role="search" method="GET" action="{% url 'customer_service_cat_search' %}">
               <input class="form-control me-2" name="category" type="search" placeholder="Search Category" aria-label="Search">
               <button class="btn btn-dark" type="submit">Search</button>
-            </form>
-          
+            </form> -->
+
+
+            <!-- <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="search_type" id="search_category" value="category" checked>
+              <label class="form-check-label text-white" for="search_category">Category</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="search_type" id="search_city" value="city">
+              <label class="form-check-label text-white" for="search_city">City</label>
+            </div> -->
+
+
+            <form class="d-flex" role="search" method="GET" action="{% url 'customer_service_cat_search' %}">
+              <div id="category_search_box">
+                <input class="form-control me-2" name="category" type="search" placeholder="Search Category" aria-label="Search">
+              </div>
+              <button class="btn btn-dark" type="submit">Search</button>
+            </form>            
+
+            <form class="d-flex" role="search" method="GET" action="{% url 'customer_service_city_search' %}">
+              <div id="city_search_box">
+                <input class="form-control me-2" name="city" type="search" placeholder="Search City" aria-label="Search">
+              </div>
+              <button class="btn btn-dark" type="submit">Search</button>
+            </form>            
+
 
               <li class="nav-item ">
                 <a class="nav-link" href="{% url 'user_home' %}">

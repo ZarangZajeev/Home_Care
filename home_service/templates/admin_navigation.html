@@ -20,7 +20,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--js-->
 <script src="{% static 'js2/jquery-2.1.1.min.js' %}"></script> 
 <!--icons-css-->
-<link href="{% static 'css2/font-awesome.css' %}" rel="stylesheet"> 
+<link href="{% static 'css2/font-awesome.css' %}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!--Google Fonts-->
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
@@ -246,6 +248,15 @@ h2, h4{
 				  
 
 		        <li><a href="{% url 'admin_order' %}"><i class="fa fa-car"></i><span>View Order</span></a></li>
+
+				<li><a href="#"><i class="fa-solid fa-city"></i><span>City</span><span class="fa fa-angle-right" style="float: right"></span></a>
+		        	 <ul id="menu-academico-sub">
+			            <li id="menu-academico-avaliacoes" ><a href="{% url 'add_city' %}">Add City</a></li>
+			            <li id="menu-academico-boletim" ><a href="{% url 'view_city' %}">View City</a></li>
+		             </ul>
+		        </li>
+
+
 		        <li><a href="#"><i class="fa fa-envelope"></i><span>Messages</span><span class="fa fa-angle-right" style="float: right"></span></a>
 		        	 <ul id="menu-academico-sub">
 			            <li id="menu-academico-avaliacoes" ><a href="{% url 'new_message' %}">Unread</a></li>

@@ -29,6 +29,7 @@ urlpatterns = [
     path('all_service_man',All_Service_man,name="all_service_man"),
     path('all_customer',All_Customer,name="all_customer"),
     path('add_service',Add_Service,name="add_service"),
+    path('add_city',Add_City,name="add_city"),
  
     path('view_service',View_Service,name="view_service"),
     path('view_city',View_City,name="view_city"),
@@ -56,7 +57,8 @@ urlpatterns = [
     path('order_detail(<int:pid>)',Order_detail,name="order_detail"),
     path('service_man_detail(<int:pid>)',service_man_detail,name="service_man_detail"),
     path('delete_city(<int:pid>)',delete_city,name="delete_city"),
-    path('search/', customer_service_search, name='customer_service_search'),
+    path('search/', customer_service_cat_search, name='customer_service_cat_search'),
+    path('search/', customer_service_city_search, name='customer_service_city_search'),
     path('reset_password',auth_views.PasswordResetView.as_view(template_name="reset_password.html"),name="reset_password"),
     path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(template_name='reset_password_sent.html'),name="password_reset_done"),
     path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name='password_reset.html'),name="password_reset_confirm"),

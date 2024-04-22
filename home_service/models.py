@@ -77,6 +77,7 @@ class Total_Man(models.Model):
     def __str__(self):
         return self.service.user.first_name
 
+
 class Order(models.Model):
     report_status = models.CharField(max_length=100, null=True)
     status = models.ForeignKey(Status,on_delete=models.CASCADE,null=True)

@@ -1,16 +1,17 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from django.views.generic import View
+from django.views.generic import View,CreateView,DetailView,DeleteView,UpdateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
 from django.http import HttpResponse
+from django.urls import reverse
 
 from django.conf import settings
 
-from home_service.forms import CustomerServiceSearchForm
+from home_service.forms import CustomerServiceSearchForm,AddCityForm
 
 import random
 import string
@@ -563,6 +564,16 @@ def View_Service(request):
     d = {'ser':ser}
     return render(request,'view_service.html',d)
 
+def Add_City(request):
+    error=False
+    if request.method == "POST":
+        c = request.POST['ci']
+        City.objects.create(city=c)
+        error=True
+    d = {'error':error}
+    return render(request,'add_city.html',d)
+
+
 def View_City(request):
     
     ser = City.objects.all()
@@ -713,7 +724,7 @@ def read_message(request):
 
 
 
-def customer_service_search(request):
+def customer_service_cat_search(request):
     if request.method == 'GET':
         form = CustomerServiceSearchForm(request.GET)
         if form.is_valid():
@@ -734,6 +745,28 @@ def customer_service_search(request):
         form = CustomerServiceSearchForm()
         return render(request, 'search_results.html', {'form': form})
     
+# with city
+def customer_service_city_search(request):
+    if request.method == 'GET':
+        form = CustomerServiceSearchForm(request.GET)
+        if form.is_valid():
+            city = form.cleaned_data.get('city')
+            print(city)
+            # services = Service_Category.objects.filter(category__icontains=category)
+            services = Service_Man.objects.filter(city__icontains=city)
+            print(services)
+            if services:
+                return render(request, 'search_results.html', {'services': services})
+            else:
+                error_message = "No services found for the provided category"
+                return render(request, 'search_results.html', {'form': form, 'error_message': error_message})
+        else:
+            error_message = "Invalid search criteria."
+            return render(request, 'search_results.html', {'form': form, 'error_message': error_message})
+    else:
+        form = CustomerServiceSearchForm()
+        return render(request, 'search_results.html', {'form': form})
+
 # Forgot password
     
 def generate_otp(length=6):
