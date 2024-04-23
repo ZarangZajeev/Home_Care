@@ -11,7 +11,7 @@ from django.urls import reverse
 
 from django.conf import settings
 
-from home_service.forms import CustomerServiceSearchForm,AddCityForm
+from home_service.forms import CustomerServiceSearchForm,ServiceManSearchForm
 
 import random
 import string
@@ -748,7 +748,7 @@ def customer_service_cat_search(request):
 # with city
 def customer_service_city_search(request):
     if request.method == 'GET':
-        form = CustomerServiceSearchForm(request.GET)
+        form = ServiceManSearchForm(request.GET)
         if form.is_valid():
             city = form.cleaned_data.get('city')
             print(city)
